@@ -81,12 +81,12 @@ def talker():
 
     stop(pub, duration=2)
 
-    while not rospy.is_shutdown():
+    # while not rospy.is_shutdown():
         # hello_str = "hello world %s" % rospy.get_time()
         # rospy.loginfo(hello_str)
         # pub.publish(hello_str)
         # stop(pub, duration=1)
-        rate.sleep()
+        # rate.sleep()
 
 if __name__ == '__main__':
     try:
