@@ -1,2 +1,0 @@
-set(dynamixel_msgs_MESSAGE_FILES "/home/jackmin/a/ROS-Jupiter-01/src/basic_function_packages/dynamixel_motor/dynamixel_msgs/msg/JointState.msg;/home/jackmin/a/ROS-Jupiter-01/src/basic_function_packages/dynamixel_motor/dynamixel_msgs/msg/MotorState.msg;/home/jackmin/a/ROS-Jupiter-01/src/basic_function_packages/dynamixel_motor/dynamixel_msgs/msg/MotorStateList.msg")
-set(dynamixel_msgs_SERVICE_FILES "")
