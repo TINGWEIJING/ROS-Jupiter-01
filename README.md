@@ -43,3 +43,14 @@ rostopic pub -1 /elbow_controller/command std_msgs/Float64 -- 1
 rostopic pub -1 /hand_controller/command std_msgs/Float64 -- 0
 
 ```
+
+## Voice
+```bash
+roslaunch pocketsphinx kws.launch \
+dict:=/home/mustar/catkin_ws/src/basic_function_packages/pocketsphinx/demo/voice_cmd.dic \
+kws:=/home/mustar/catkin_ws/src/basic_function_packages/pocketsphinx/demo/voice_cmd.kwlist
+
+rostopic echo /kws_data
+
+
+```
