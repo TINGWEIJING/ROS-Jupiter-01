@@ -1,56 +1,49 @@
-# ROS
-## Commands
+# ROS Jupiter 01
+## Build
 ```bash
-# only for first time
-rosrun kobuki_ftdi create_udev_rules
+source devel/setup.bash
 
-# check kobuki connection
-rosrun kobuki_driver version_info
-
-# install all dep in workspace
+# install all dependencies in this workspace
 rosdep install --from-paths src --ignore-src -r -y
 
-# turtlebot startup
-roslaunch turtlebot_bringup minimal.launch
-
-# turtlebot control
-roslaunch turtlebot_teleop keyboard_teleop.launch
-```
-
-## Workspace setting
-```bash
-export ROS_PYTHON_VERSION=3
-catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
+# build executable python file
+catkin_make
 
 source devel/setup.bash
-echo $ROS_PACKAGE_PATH
-
-export ROS_PACKAGE_PATH="/home/jackmin/a/ROS-Jupiter-01/src:/home/jackmin/kobuki/src:/opt/ros/melodic/share"
 ```
 
-## Turtlebot
+## Quick Start for Robot Movement
 ```bash
-sudo apt-get install ros-melodic-turtlebot ros-melodic-turtlebot-apps ros-melodic-turtlebot-interactions ros-melodic-turtlebot-simulator ros-melodic-kobuki-ftdi ros-melodic-rocon-remocon ros-melodic-rocon-qt-library ros-melodic-ar-track-alvar-msgs
+# turtlebot startup (run in seperate terminal)
+roslaunch turtlebot_bringup minimal.launch
+
+# run script (run in seperate terminal)
+source devel/setup.bash
+rosrun jupiter_movement robot_movement.py
 ```
 
-## Arm
-```
+## Quick Start for Robot Arm Movement
+```bash
+# Jupiter Robot Arm startup (run in seperate terminal)
 roslaunch jupiterobot_arm_bringup joints_bringup.launch 
 
-
-rostopic pub -1 /elbow_controller/command std_msgs/Float64 -- 0
-rostopic pub -1 /elbow_controller/command std_msgs/Float64 -- 1
-rostopic pub -1 /hand_controller/command std_msgs/Float64 -- 0
-
+# run script (run in seperate terminal)
+source devel/setup.bash
+rosrun jupiter_movement robot_arm_movement.py
 ```
 
-## Voice
+
+## Quick Start for Voice Control Robot Movement
 ```bash
+# turtlebot startup (run in seperate terminal)
+roslaunch turtlebot_bringup minimal.launch
+
+# PocketSphinx Voice Recognition startup (run in seperate terminal)
 roslaunch pocketsphinx kws.launch \
 dict:=/home/mustar/catkin_ws/src/basic_function_packages/pocketsphinx/demo/voice_cmd.dic \
 kws:=/home/mustar/catkin_ws/src/basic_function_packages/pocketsphinx/demo/voice_cmd.kwlist
 
-rostopic echo /kws_data
-
-
+# run script (run in seperate terminal)
+source devel/setup.bash
+rosrun jupiter_movement voice_control_movement.py 
 ```

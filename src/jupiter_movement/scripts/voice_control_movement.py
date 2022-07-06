@@ -6,6 +6,9 @@ from geometry_msgs.msg import Twist
 pub = None
 
 def rotate_left(pub, duration=2, val=0.5):
+    '''
+    Let robot rotate anti-clockwise
+    '''
     for i in range(duration):
         twist = Twist()
         twist.linear.x = 0; twist.linear.y = 0; twist.linear.z = 0
@@ -14,6 +17,9 @@ def rotate_left(pub, duration=2, val=0.5):
         rospy.sleep(0.5)
 
 def rotate_right(pub, duration=2, val=-0.5):
+    '''
+    Let robot rotate clockwise
+    '''
     for i in range(duration):
         twist = Twist()
         twist.linear.x = 0; twist.linear.y = 0; twist.linear.z = 0
@@ -22,6 +28,9 @@ def rotate_right(pub, duration=2, val=-0.5):
         rospy.sleep(0.5)
 
 def go_forward(pub, duration=1, val=0.1):
+    '''
+    Let robot go forward
+    '''
     for i in range(duration):
         twist = Twist()
         twist.linear.x = val; twist.linear.y = 0; twist.linear.z = 0
@@ -30,6 +39,9 @@ def go_forward(pub, duration=1, val=0.1):
         rospy.sleep(0.5)
 
 def go_backward(pub, duration=1, val=-0.1):
+    '''
+    Let robot go backward
+    '''
     for i in range(duration):
         twist = Twist()
         twist.linear.x = val; twist.linear.y = 0; twist.linear.z = 0
@@ -38,6 +50,9 @@ def go_backward(pub, duration=1, val=-0.1):
         rospy.sleep(0.5)
 
 def stop(pub, duration=2):
+    '''
+    Do nothing, let robot stop and rest
+    '''    
     for i in range(duration):
         twist = Twist()
         twist.linear.x = 0; twist.linear.y = 0; twist.linear.z = 0
